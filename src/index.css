@@ -1,0 +1,229 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 142.1 76.2% 36.3%;
+    --primary-foreground: 355.7 100% 97.3%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 142.1 76.2% 36.3%;
+    --radius: 1rem;
+  }
+
+  .dark {
+    --background: 20 14.3% 4.1%;
+    --foreground: 0 0% 95%;
+    --card: 24 9.8% 10%;
+    --card-foreground: 0 0% 95%;
+    --popover: 0 0% 9%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 142.1 70.6% 45.3%;
+    --primary-foreground: 144.9 80.4% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 12 6.5% 15.1%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 85.7% 97.3%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 142.4 71.8% 29.2%;
+  }
+}
+
+@layer base {
+  * {
+    /* background-color: hsl(var(--background)); */
+    border-color: hsl(var(--border));
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    border-color: hsl(var(--border));
+    header {
+      background-color: hsl(var(--card));
+      color: hsl(var(--card-foreground));
+    }
+    Button {
+      background-color: hsl(var(--primary));
+      /* color: hsl(var(--primary-foreground)); */
+      border-color: hsl(var(--border));
+    }
+    select {
+      background-color: hsl(var(--background));
+      color: hsl(var(--foreground));
+    }
+
+    input {
+      background-color: hsl(var(--background));
+      color: hsl(var(--foreground));
+    }
+    /* main {
+      background-color: hsl(var(--background));
+      color: hsl(var(--foreground));
+    }
+    footer {
+      background-color: hsl(var(--card));
+      color: hsl(var(--card-foreground));
+    }
+    button {
+      background-color: hsl(var(--primary));
+      color: hsl(var(--primary-foreground));
+    }
+    select {
+      background-color: hsl(var(--input));
+      color: hsl(var(--foreground));
+    }
+    option {
+      color: hsl(var(--foreground));
+      background-color: hsl(var(--input));
+    }
+    textare {
+      background-color: hsl(var(--input));
+    }
+    a {
+      color: hsl(var(--primary));
+    }
+    input {
+      background-color: hsl(var(--input));
+    }
+    .ring {
+      box-shadow: 0 0 0 3px hsl(var(--ring));
+    }
+    div {
+      color: hsl(var(--card-foreground));
+    }
+    .popover {
+      background-color: hsl(var(--popover));
+      color: hsl(var(--popover-foreground));
+    }
+    .secondary {
+      background-color: hsl(var(--secondary));
+      color: hsl(var(--secondary-foreground));
+    }
+    .muted {
+      background-color: hsl(var(--muted));
+      color: hsl(var(--muted-foreground));
+    }
+    .accent {
+      background-color: hsl(var(--accent));
+      color: hsl(var(--accent-foreground));
+    }
+    .destructive {
+      background-color: hsl(var(--destructive));
+      color: hsl(var(--destructive-foreground));
+    }
+    span {
+      color: hsl(var(--foreground));
+    }
+    h1 {
+      color: hsl(var(--foreground));
+    }
+    h2 {
+      color: hsl(var(--foreground));
+    }
+    h3 {
+      color: hsl(var(--foreground));
+    }
+    h4 {
+      color: hsl(var(--foreground));
+    }
+    h5 {
+      color: hsl(var(--foreground));
+    }
+    h6 {
+      color: hsl(var(--foreground));
+    }
+    p {
+      color: hsl(var(--foreground));
+    }
+    ul {
+      color: hsl(var(--foreground));
+    }
+    ol {
+      color: hsl(var(--foreground));
+    }
+    li {
+      color: hsl(var(--foreground));
+    }
+    blockquote {
+      color: hsl(var(--foreground));
+    }
+    pre {
+      color: hsl(var(--foreground));
+    }
+    code {
+      color: hsl(var(--foreground));
+    }
+    table {
+      color: hsl(var(--foreground));
+    }
+    th {
+      color: hsl(var(--foreground));
+    }
+    td {
+      color: hsl(var(--foreground));
+    }
+    img {
+      color: hsl(var(--foreground));
+    }
+    video {
+      color: hsl(var(--foreground));
+    }
+    iframe {
+      color: hsl(var(--foreground));
+    }
+    canvas {
+      color: hsl(var(--foreground));
+    }
+    svg {
+      color: hsl(var(--foreground));
+    }
+    hr {
+      color: hsl(var(--foreground));
+    }
+    address {
+      color: hsl(var(--foreground));
+    }
+    b {
+      color: hsl(var(--foreground));
+    }
+    strong {
+      color: hsl(var(--foreground));
+    }
+    i {
+      color: hsl(var(--foreground));
+    }
+    em {
+      color: hsl(var(--foreground));
+    }
+    mark {
+      color: hsl(var(--foreground));
+    }
+    small {
+      color: hsl(var(--foreground));
+    }
+    del {
+      color: hsl(var(--foreground));
+    } */
+  }
+}
