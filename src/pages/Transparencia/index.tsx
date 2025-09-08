@@ -1,6 +1,4 @@
-// src/pages/TransparencyPage.tsx
-
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import CountUp from "react-countup";
@@ -92,7 +90,7 @@ const StatCounter = ({
 };
 
 // Renderiza a fatia ativa (maior) do gráfico de rosca
-const ActiveShape = (props: unknow) => {
+const ActiveShape = (props: unknown) => {
   const {
     cx,
     cy,
@@ -150,7 +148,7 @@ const BackgroundIcons = () => (
 export function TransparencyPage() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
-  const onPieEnter = (_: unknow, index: number) => setActiveIndex(index);
+  const onPieEnter = (_: unknown, index: number) => setActiveIndex(index);
   const onPieLeave = () => setActiveIndex(null);
 
   return (
@@ -213,21 +211,21 @@ export function TransparencyPage() {
                     cy="50%"
                     innerRadius={90}
                     outerRadius={130}
-                    fill="#8884d8"
                     paddingAngle={3}
                     dataKey="value"
-                    activeIndex={activeIndex ?? undefined}
                     activeShape={ActiveShape}
-                    onMouseEnter={onPieEnter}
-                    onMouseLeave={onPieLeave}
+                    onMouseEnter={(_, index) => setActiveIndex(index)}
+                    onMouseLeave={() => setActiveIndex(null)}
                   >
-                    {financialData.breakdown.map((entry, index) => (
-                      <Cell
-                        key={`cell-${index}`}
-                        fill={entry.color}
-                        className="outline-none cursor-pointer"
-                      />
-                    ))}
+                    {financialData.breakdown.map(
+                      (entry: unknown, index: number) => (
+                        <Cell
+                          key={`cell-${index}`}
+                          fill={entry.color}
+                          className="outline-none cursor-pointer"
+                        />
+                      )
+                    )}
                   </Pie>
                 </PieChart>
               </ResponsiveContainer>
