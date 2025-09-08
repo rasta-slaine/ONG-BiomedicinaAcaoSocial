@@ -126,7 +126,7 @@ export function Slide() {
       )}
 
       {/* Animação CSS para o banner (opcional) */}
-      <style jsx>{`
+      <style>{`
         @keyframes slow-pan {
           0% {
             transform: translateX(25%);
