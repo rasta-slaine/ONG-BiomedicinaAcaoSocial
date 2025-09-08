@@ -218,7 +218,7 @@ export function TransparencyPage() {
                     onMouseLeave={() => setActiveIndex(null)}
                   >
                     {financialData.breakdown.map(
-                      (entry: unknown, index: number) => (
+                      (entry: any, index: number) => (
                         <Cell
                           key={`cell-${index}`}
                           fill={entry.color}
