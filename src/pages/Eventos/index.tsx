@@ -13,8 +13,8 @@ import { EventCard } from "./components/EventCard";
 import { Pagination } from "./components/Pagination";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Users, GraduationCap, Building2, Award } from "lucide-react";
+//import { Badge } from "@/components/ui/badge";
+//import { Users, GraduationCap, Building2, Award } from "lucide-react";
 
 export function EventsPage() {
   const [eventsData] = useState(events);

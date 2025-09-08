@@ -1,6 +1,3 @@
-// src/components/CtaTampinhaDoBem.tsx
-
-import React from "react";
 import { Link } from "react-router-dom";
 import { Recycle, ArrowRight } from "lucide-react";
 

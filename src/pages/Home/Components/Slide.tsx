@@ -1,6 +1,6 @@
 // src/components/IntroBlock.tsx
 
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 const Slide1 = "/images/voluntaria-em-acao.png";
 const Slide2 = "/images/cientista-no-laboratorio.png";

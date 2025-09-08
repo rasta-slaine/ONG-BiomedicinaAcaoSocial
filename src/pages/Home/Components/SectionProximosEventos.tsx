@@ -1,4 +1,3 @@
-import React from "react";
 //import { Link } from "react-router-dom";
 import { ArrowRight, MapPin } from "lucide-react";
 import { events as mockEvents } from "@/mock/eventos"; // Certifique-se que o caminho está correto

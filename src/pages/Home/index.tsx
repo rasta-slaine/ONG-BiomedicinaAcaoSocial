@@ -4,15 +4,15 @@ import { Link } from "react-router-dom";
 //import { events } from "@/mock/eventos";
 import { Button } from "@/components/ui/button";
 
-import { ProjectsGrid } from "./components/ProjectsGrid";
-import { SectionSasus } from "./components/SectionSasus";
-import { SectionSobre } from "./components/SectionSobre";
-import { SectionPremioDrDacio } from "./components/SectionPremioDrDacio";
-//import { MissionInAction } from "./components/MissionInAction";
-import { SectionDoeMedicamento } from "./components/SectionDoeMedicamento";
-import { SectionProximosEventos } from "./components/SectionProximosEventos";
-import { SectionParceiros } from "./components/SectionParceiros";
-import { SectionTestemunhos } from "./components/SectionTestemunhos";
+import { ProjectsGrid } from "./Components/ProjectsGrid";
+import { SectionSasus } from "./Components/SectionSasus";
+import { SectionSobre } from "./Components/SectionSobre";
+import { SectionPremioDrDacio } from "./Components/SectionPremioDrDacio";
+//import { MissionInAction } from "./Components/MissionInAction";
+import { SectionDoeMedicamento } from "./Components/SectionDoeMedicamento";
+import { SectionProximosEventos } from "./Components/SectionProximosEventos";
+import { SectionParceiros } from "./Components/SectionParceiros";
+import { SectionTestemunhos } from "./Components/SectionTestemunhos";
 import { SectionTampinha } from "./Components/SectionTampinhas";
 import { SectionProgramaCuidar } from "./Components/SectionProgramaCuidar";
 /*

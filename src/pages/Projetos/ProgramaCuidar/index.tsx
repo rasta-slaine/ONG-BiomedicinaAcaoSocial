@@ -1,6 +1,3 @@
-// src/pages/ProgramaCuidarPage.tsx
-
-import React from "react";
 import { Link } from "react-router-dom";
 import { BrainCircuit, Target, Hotel, ArrowRight } from "lucide-react";
 //import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
