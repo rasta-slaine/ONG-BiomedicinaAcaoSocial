@@ -1,6 +1,8 @@
 // src/components/TextHeroSection.tsx
 
 import { motion } from "framer-motion";
+import { Variants } from "framer-motion";
+
 import { BookOpen, Heart } from "lucide-react";
 
 // --- DADOS DO COMPONENTE ---

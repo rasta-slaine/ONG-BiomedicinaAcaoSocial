@@ -1,5 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-//import { SiteHeader } from "./components/site-header";
+
+import { LanguageProvider } from "./contexts/LanguageContext";
+import { TopHeader } from "./components/TopHeader";
 import { SiteFooter } from "./components/site-footer";
 import { HomePage } from "./pages/Home/index";
 import { EventsPage } from "./pages/Eventos/index";
@@ -37,89 +39,92 @@ import { ProjetoDescarteConsciente } from "./pages/Projetos/Medicamentos/Descart
 
 export default function App() {
   return (
-    <Router>
-      <div className="">
-        <ResponsiveNavbar />
+    <LanguageProvider>
+      <Router>
+        <div className="">
+          <TopHeader />
+          <ResponsiveNavbar />
 
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/eventos" element={<EventsPage />} />
-          <Route path="/eventos/:eventId" element={<EventDetailsPage />} />
-          <Route path="/blog" element={<BlogPage />} />
-          <Route path="/blog/:postId" element={<BlogPostPage />} />
-          <Route path="/contato" element={<ContactPage />} />
-          <Route path="/doacao" element={<DonatePage />} />
-          <Route path="/sobre" element={<PaginaSobre />} />
-          <Route path="/volunteer" element={<VolunteerPage />} />
-          <Route path="/impact-awards" element={<ImpactAwardsPage />} />
-          <Route path="/transparencia" element={<TransparencyPage />} />
-          <Route path="/sasus" element={<SasusPage />} />
-          <Route path="/sasus/agendamento" element={<SasusAgendamento />} />
-          <Route path="/dr-dacio-campos" element={<DrDacioCamposPage />} />
-          <Route
-            path="/premio-dacio-campos/inscricao"
-            element={<FormularioInscricao />}
-          />
-          <Route path="/inscricao" element={<FormularioInscricao />} />
-          <Route path="/projetos/tampinhas" element={<ProjetoTampinhas />} />
-          <Route
-            path="/projetos/programa-cuidar"
-            element={<ProjetoProgramaCuidar />}
-          />
-          <Route
-            path="/programas/medicamentos-doacao"
-            element={<ProjetoDoarMedicamentos />}
-          />
-          <Route
-            path="/programas/medicamentos-descarte"
-            element={<ProjetoDescarteConsciente />}
-          />
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/eventos" element={<EventsPage />} />
+            <Route path="/eventos/:eventId" element={<EventDetailsPage />} />
+            <Route path="/blog" element={<BlogPage />} />
+            <Route path="/blog/:postId" element={<BlogPostPage />} />
+            <Route path="/contato" element={<ContactPage />} />
+            <Route path="/doacao" element={<DonatePage />} />
+            <Route path="/sobre" element={<PaginaSobre />} />
+            <Route path="/volunteer" element={<VolunteerPage />} />
+            <Route path="/impact-awards" element={<ImpactAwardsPage />} />
+            <Route path="/transparencia" element={<TransparencyPage />} />
+            <Route path="/sasus" element={<SasusPage />} />
+            <Route path="/sasus/agendamento" element={<SasusAgendamento />} />
+            <Route path="/dr-dacio-campos" element={<DrDacioCamposPage />} />
+            <Route
+              path="/premio-dacio-campos/inscricao"
+              element={<FormularioInscricao />}
+            />
+            <Route path="/inscricao" element={<FormularioInscricao />} />
+            <Route path="/projetos/tampinhas" element={<ProjetoTampinhas />} />
+            <Route
+              path="/projetos/programa-cuidar"
+              element={<ProjetoProgramaCuidar />}
+            />
+            <Route
+              path="/programas/medicamentos-doacao"
+              element={<ProjetoDoarMedicamentos />}
+            />
+            <Route
+              path="/programas/medicamentos-descarte"
+              element={<ProjetoDescarteConsciente />}
+            />
 
-          <Route
-            path="/projetos/biomedicina"
-            element={<ProjetoBiomedicinaAcaoSocial />}
-          />
-          <Route path="/biomedicine" element={<BiomedicinePage />} />
-          <Route
-            path="/projetos/enfermagem"
-            element={<ProjetoEmfermagemAcaoSocial />}
-          />
-          <Route
-            path="/projetos/psicologia"
-            element={<ProjetoPsicologiaAcaoSocial />}
-          />
-          <Route
-            path="/projetos/farmacia"
-            element={<ProjetoFarmaciaAcaoSocial />}
-          />
-          <Route
-            path="/projetos/fisioterapia"
-            element={<ProjetoFisioterapiaAcaoSocial />}
-          />
-          <Route
-            path="/projetos/nutricao"
-            element={<ProjetoNutricaoAcaoSocial />}
-          />
-          <Route
-            path="/projetos/veterinaria"
-            element={<ProjetoVeterinariaAcaoSocial />}
-          />
-          <Route
-            path="/projetos/medicina"
-            element={<ProjetoMedicinaAcaoSocial />}
-          />
-          <Route
-            path="/projetos/acupuntura"
-            element={<ProjetoAcupunturaAcaoSocial />}
-          />
-          <Route
-            path="/projetos/odontologia"
-            element={<ProjetoOdontologiaAcaoSocial />}
-          />
-        </Routes>
+            <Route
+              path="/projetos/biomedicina"
+              element={<ProjetoBiomedicinaAcaoSocial />}
+            />
+            <Route path="/biomedicine" element={<BiomedicinePage />} />
+            <Route
+              path="/projetos/enfermagem"
+              element={<ProjetoEmfermagemAcaoSocial />}
+            />
+            <Route
+              path="/projetos/psicologia"
+              element={<ProjetoPsicologiaAcaoSocial />}
+            />
+            <Route
+              path="/projetos/farmacia"
+              element={<ProjetoFarmaciaAcaoSocial />}
+            />
+            <Route
+              path="/projetos/fisioterapia"
+              element={<ProjetoFisioterapiaAcaoSocial />}
+            />
+            <Route
+              path="/projetos/nutricao"
+              element={<ProjetoNutricaoAcaoSocial />}
+            />
+            <Route
+              path="/projetos/veterinaria"
+              element={<ProjetoVeterinariaAcaoSocial />}
+            />
+            <Route
+              path="/projetos/medicina"
+              element={<ProjetoMedicinaAcaoSocial />}
+            />
+            <Route
+              path="/projetos/acupuntura"
+              element={<ProjetoAcupunturaAcaoSocial />}
+            />
+            <Route
+              path="/projetos/odontologia"
+              element={<ProjetoOdontologiaAcaoSocial />}
+            />
+          </Routes>
 
-        <SiteFooter />
-      </div>
-    </Router>
+          <SiteFooter />
+        </div>
+      </Router>
+    </LanguageProvider>
   );
 }
