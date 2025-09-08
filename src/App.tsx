@@ -6,8 +6,8 @@ import { SiteFooter } from "./components/site-footer";
 import { HomePage } from "./pages/Home/index";
 import { EventsPage } from "./pages/Eventos/index";
 import { EventDetailsPage } from "./pages/Eventos/EventoDetails/event-details-page";
-import { BlogPage } from "./pages/Blog/index";
-import { BlogPostPage } from "./pages/Blog/PostDetails/blog-post-page";
+//import { BlogPage } from "./pages/Blog/index";
+//import { BlogPostPage } from "./pages/Blog/PostDetails/blog-post-page";
 import { ContactPage } from "./pages/Contato/index";
 import { DonatePage } from "./pages/Doacao/index";
 import { PaginaSobre } from "./pages/Sobre/index";
@@ -49,8 +49,8 @@ export default function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/eventos" element={<EventsPage />} />
             <Route path="/eventos/:eventId" element={<EventDetailsPage />} />
-            <Route path="/blog" element={<BlogPage />} />
-            <Route path="/blog/:postId" element={<BlogPostPage />} />
+            {/*<Route path="/blog" element={<BlogPage />} />
+            <Route path="/blog/:postId" element={<BlogPostPage />} />*/}
             <Route path="/contato" element={<ContactPage />} />
             <Route path="/doacao" element={<DonatePage />} />
             <Route path="/sobre" element={<PaginaSobre />} />
