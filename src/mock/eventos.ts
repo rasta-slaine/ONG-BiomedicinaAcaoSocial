@@ -461,7 +461,7 @@ export const events: Event[] = [
     category: "Premiação",
     service: 0,
     professional: 78,
-    isFeatured: false,
+    isFeatured: true,
   },
   {
     id: "31",
@@ -476,7 +476,7 @@ export const events: Event[] = [
     category: "Saúde",
     service: 23,
     professional: 5,
-    isFeatured: false,
+    isFeatured: true,
   },
   {
     id: "32",
@@ -491,7 +491,7 @@ export const events: Event[] = [
     category: "Saúde",
     service: 97,
     professional: 63,
-    isFeatured: false,
+    isFeatured: true,
   },
   {
     id: "33",

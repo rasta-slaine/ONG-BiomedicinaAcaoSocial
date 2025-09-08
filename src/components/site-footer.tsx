@@ -1,3 +1,6 @@
+// src/components/SiteFooter.tsx
+
+import React from "react";
 import { Link } from "react-router-dom";
 import {
   Facebook,
@@ -6,257 +9,186 @@ import {
   Mail,
   MapPin,
   Phone,
-  Twitter,
 } from "lucide-react";
 
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-const logoImage = "/images/logo-ong.jpg";
+// --- DADOS DO FOOTER ---
+// Manter os dados aqui facilita a manutenção
+
+const logoUrl = "/images/logo/Logo_ong_new_semfundo_size2.png";
+const ongName = "Instituto de Saúde Multiprofissional";
+const ongSlogan =
+  "Acreditamos que o cuidado com a vida começa pelo acesso à informação, atendimento e dignidade.";
+
+const navLinks = [
+  { href: "/", label: "Início" },
+  { href: "/sobre", label: "Sobre Nós" },
+  { href: "/sasus", label: "SASUS" },
+  { href: "/contato", label: "Contato" },
+];
+
+const projectLinks = [
+  { href: "/projetos/biomedicina", label: "Biomedicina Ação Social" },
+  { href: "/projetos/enfermagem", label: "Enfermagem Ação Social" },
+  { href: "/projetos/psicologia", label: "Psicologia Ação Social" },
+  { href: "/projetos/farmacia", label: "Farmácia Ação Social" },
+  { href: "/projetos/fisioterapia", label: "Fisioterapia Ação Social" },
+  // Adicione outros projetos se desejar
+];
+const programLinks = [
+  { href: "/programa-cuidar", label: "Programa Cuidar" },
+  { href: "/tampinha-do-bem", label: "Tampinha do Bem" },
+  { href: "/doar-medicamentos", label: "Doação de Medicamentos" },
+  { href: "/descarte-consciente", label: "Descarte Consciente" },
+];
+
+const socialLinks = [
+  { href: "#", label: "Facebook", icon: Facebook },
+  { href: "#", label: "Instagram", icon: Instagram },
+  { href: "#", label: "LinkedIn", icon: Linkedin },
+];
+
+const contactDetails = [
+  { icon: MapPin, text: "Rua da Ação Social, 123, São Paulo - SP", href: "#" },
+  { icon: Phone, text: "(11) 99999-8888", href: "tel:+5511999998888" },
+  { icon: Mail, text: "contato@suaong.org", href: "mailto:contato@suaong.org" },
+];
 
 export function SiteFooter() {
   return (
-    <footer className="bg-background border-t">
-      <div className="flex items-center  px-7 py-10 md:py-16">
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5">
-          {/* Company Info */}
-          <div className="flex flex-col space-y-4">
-            <img
-              src={logoImage}
-              alt="Logo"
-              className="h-16 w-16 rounded-full object-cover"
-            />
-            <p className="text-sm text-muted-foreground">
-              Acreditamos que o cuidado com a vida começa pelo acesso à
-              informação, atendimento e dignidade.
-            </p>
-            <div className="flex space-x-4">
-              <a
-                href="https://twitter.com"
-                className="text-muted-foreground hover:text-foreground"
-                aria-label="Twitter"
-              >
-                <Twitter size={20} />
-              </a>
-              <a
-                href="https://facebook.com"
-                className="text-muted-foreground hover:text-foreground"
-                aria-label="Facebook"
-              >
-                <Facebook size={20} />
-              </a>
-              <a
-                href="https://instagram.com"
-                className="text-muted-foreground hover:text-foreground"
-                aria-label="Instagram"
-              >
-                <Instagram size={20} />
-              </a>
-              <a
-                href="https://linkedin.com"
-                className="text-muted-foreground hover:text-foreground"
-                aria-label="LinkedIn"
-              >
-                <Linkedin size={20} />
-              </a>
-            </div>
-          </div>
-
-          {/* Quick Links */}
-          <div className="flex flex-col space-y-4">
-            <h2 className="text-lg font-bold">Links</h2>
-            <ul className="space-y-2 text-sm">
-              <li>
-                <Link
-                  to="/"
-                  className="text-muted-foreground hover:text-foreground"
-                >
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/about"
-                  className="text-muted-foreground hover:text-foreground"
-                >
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/services"
-                  className="text-muted-foreground hover:text-foreground"
-                >
-                  Services
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/products"
-                  className="text-muted-foreground hover:text-foreground"
-                >
-                  Products
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/contact"
-                  className="text-muted-foreground hover:text-foreground"
-                >
-                  Contact
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Services */}
-          <div className="flex flex-col space-y-4">
-            <h2 className="text-lg font-bold">Veja Mais</h2>
-            <ul className="space-y-2 text-sm">
-              <li>
-                <Link
-                  to="/services/service-1"
-                  className="text-muted-foreground hover:text-foreground"
-                >
-                  Service 1
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/services/service-2"
-                  className="text-muted-foreground hover:text-foreground"
-                >
-                  Service 2
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/products/category-1"
-                  className="text-muted-foreground hover:text-foreground"
-                >
-                  Category 1
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/products/category-2"
-                  className="text-muted-foreground hover:text-foreground"
-                >
-                  Category 2
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/products/category-3"
-                  className="text-muted-foreground hover:text-foreground"
-                >
-                  Category 3
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Contact Info */}
-          <div className="flex flex-col space-y-4">
-            <h2 className="text-lg font-bold">Entre Em Contato</h2>
-            <ul className="space-y-2 text-sm">
-              <li className="flex items-start space-x-2">
-                <MapPin size={18} className="mt-0.5 text-muted-foreground" />
-                <span className="text-muted-foreground">
-                  123 Business Street, Suite 100, City, State 12345
-                </span>
-              </li>
-              <li className="flex items-center space-x-2">
-                <Phone size={18} className="text-muted-foreground" />
-                <a
-                  href="tel:+11234567890"
-                  className="text-muted-foreground hover:text-foreground"
-                >
-                  (123) 456-7890
-                </a>
-              </li>
-              <li className="flex items-center space-x-2">
-                <Mail size={18} className="text-muted-foreground" />
-                <a
-                  href="mailto:info@yourcompany.com"
-                  className="text-muted-foreground hover:text-foreground"
-                >
-                  info@yourcompany.com
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Newsletter */}
-          <div className="flex flex-col space-y-4 sm:col-span-2 md:col-span-1">
-            <h2 className="text-lg font-bold">Newsletter</h2>
-            <p className="text-sm text-muted-foreground">
-              Assine nossa newsletter para receber atualizações e novidades.
-            </p>
-            <div className="flex flex-col space-y-2">
-              <Input
-                type="email"
-                placeholder="Coloque seu Email..."
-                className="bg-background"
+    <footer className="bg-white border-t">
+      <div className="container mx-auto px-4 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+          {/* Coluna 1: Logo e Social */}
+          <div className="lg:col-span-1 space-y-4">
+            <a href="/" className="flex items-center space-x-3">
+              <img
+                src={logoUrl}
+                alt="Logo"
+                className="h-14 w-14 rounded-full object-cover"
               />
-              <Button>Inscrever-se</Button>
+              <span className="font-bold text-lg">{ongName}</span>
+            </a>
+            <p className="text-sm text-gray-600">{ongSlogan}</p>
+            <div className="flex space-x-4 pt-2">
+              {socialLinks.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  className="text-gray-400 hover:text-green-600 transition-colors"
+                  aria-label={link.label}
+                >
+                  <link.icon size={24} />
+                </a>
+              ))}
             </div>
+          </div>
+
+          {/* Coluna 2: Navegação e Projetos */}
+          <div className="space-y-8">
+            <div>
+              <h3 className="text-base font-semibold text-gray-900">Navegue</h3>
+              <ul className="mt-4 space-y-2 text-sm">
+                {navLinks.map((link) => (
+                  <li key={link.label}>
+                    <Link
+                      to={link.href}
+                      className="text-gray-500 hover:text-gray-900"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-base font-semibold text-gray-900">
+                Programas
+              </h3>
+              <ul className="mt-4 space-y-2 text-sm">
+                {programLinks.map((link) => (
+                  <li key={link.label}>
+                    <Link
+                      to={link.href}
+                      className="text-gray-500 hover:text-gray-900"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          {/* Coluna 3: Programas */}
+          <div className="space-y-4">
+            <h3 className="text-base font-semibold text-gray-900">
+              Nossos Projetos
+            </h3>
+            <ul className="mt-4 space-y-2 text-sm">
+              {projectLinks.map((link) => (
+                <li key={link.label}>
+                  <Link
+                    to={link.href}
+                    className="text-gray-500 hover:text-gray-900"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Coluna 3: Contato */}
+          <div className="space-y-4">
+            <h3 className="text-base font-semibold text-gray-900">
+              Entre em Contato
+            </h3>
+            <ul className="space-y-3 text-sm">
+              {contactDetails.map((item) => (
+                <li key={item.text} className="flex items-start">
+                  <item.icon
+                    size={18}
+                    className="mt-1 mr-3 text-gray-400 flex-shrink-0"
+                  />
+                  <a
+                    href={item.href}
+                    className="text-gray-500 hover:text-gray-900"
+                  >
+                    {item.text}
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </div>
 
-      {/* Bottom Footer */}
-      <div className="border-t bg-muted/40">
-        <div className="container flex flex-col items-center justify-between px-4 py-6 md:flex-row">
-          <p className="mb-4 text-center text-sm text-muted-foreground md:mb-0">
-            © {new Date().getFullYear()} &nbsp;
-            <span style={{ color: "oklch(0.723 0.219 149.579)" }}>
-              BiomedicinaAçãoSocial.
-            </span>
-            &nbsp; Todos os direitos reservados.
+      {/* Barra Inferior Unificada */}
+      <div className="border-t bg-slate-50">
+        <div className="container mx-auto px-4 py-6 flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="text-sm text-center text-gray-500">
+            © {new Date().getFullYear()} {ongName}. Todos os direitos
+            reservados.
           </p>
-          <div className="flex flex-wrap justify-center gap-4 text-sm text-muted-foreground">
-            <Link to="/privacy" className="hover:text-foreground">
-              Politica de privacidade
+          <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-gray-500">
+            <Link to="/privacidade" className="hover:text-gray-900">
+              Política de Privacidade
             </Link>
-            <Link to="/terms" className="hover:text-foreground">
+            <Link to="/termos" className="hover:text-gray-900">
               Termos de Serviço
             </Link>
-            <Link to="/cookies" className="hover:text-foreground">
-              Politica de Cookie
-            </Link>
           </div>
-        </div>
-      </div>
-
-      {/* Creator Bottom Footer */}
-      <div className="border-t bg-muted/40">
-        <div className="container flex flex-col items-center px-4 py-6 md:flex-row">
-          <p className="text-sm text-center md:text-left mb-4 md:mb-0">
+          <p className="text-sm text-center text-gray-500">
             Desenvolvido por
             <a
-              href="https://seulink.com"
+              href="https://seulinkedin.com"
               target="_blank"
-              className="text-blue-400 hover:underline"
+              rel="noopener noreferrer"
+              className="font-semibold text-green-600 hover:underline"
             >
-              &nbsp; Nathan Slaine
+              &nbsp;Nathan Slaine
             </a>
           </p>
-          <div className="flex flex-wrap justify-center p-3.5 gap-4 text-sm text-muted-foreground">
-            <a
-              href="https://instagram.com"
-              className="text-muted-foreground hover:text-foreground"
-              aria-label="Instagram"
-            >
-              <Instagram size={20} />
-            </a>
-            <a
-              href="https://linkedin.com"
-              className="text-muted-foreground hover:text-foreground"
-              aria-label="LinkedIn"
-            >
-              <Linkedin size={20} />
-            </a>
-          </div>
         </div>
       </div>
     </footer>

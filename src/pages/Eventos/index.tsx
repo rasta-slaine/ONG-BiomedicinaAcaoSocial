@@ -13,6 +13,8 @@ import { EventCard } from "./components/EventCard";
 import { Pagination } from "./components/Pagination";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Users, GraduationCap, Building2, Award } from "lucide-react";
 
 export function EventsPage() {
   const [eventsData] = useState(events);
@@ -49,8 +51,8 @@ export function EventsPage() {
   }, [currentPage]);
 
   return (
-    <div className="py-8 md:py-12 flex flex-col space-y-8 w-full p-7">
-      <section className="relative bg-gradient-to-r from-emerald-600 to-green-500  py-24 text-white text-center">
+    <div className=" md:flex flex-col">
+      <section className="relative bg-gradient-to-r from-emerald-600 to-green-500  py-24 text-white text-center mb-10">
         <div className="container mx-auto px-6 max-w-4xl">
           <h1 className="mb-6 text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl">
             Participe dos Nossos Eventos

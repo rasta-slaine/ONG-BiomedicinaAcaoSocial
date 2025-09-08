@@ -28,17 +28,17 @@ export const ProximosEventos = () => {
 
   return (
     <section className="py-16  ">
-      <div className="container">
-        <h2 className="mb-12 text-center text-3xl font-bold tracking-tight md:text-4xl">
+      <div className="items-center justify-center ">
+        <h2 className="text-center text-3xl font-extrabold leading-tight tracking-tight sm:text-6xl md:text-6xl drop-shadow-md  ">
           Próximos Eventos
         </h2>
 
-        <div className="mx-auto max-w-4xl">
-          <div className="grid gap-6 md:grid-cols-2">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 grid-rows-2 gap-4 p-2 justify-center">
             {upcomingEvents.map((event) => (
               <Card
                 key={event.id}
-                className="overflow-hidden shadow-2xl   hover:shadow-md transition-all"
+                className="w-sm overflow-hidden shadow-2xl transition-all border-4  border-green-100  hover:shadow-md"
               >
                 <div className="aspect-video w-full overflow-hidden">
                   <img
@@ -60,7 +60,11 @@ export const ProximosEventos = () => {
                   </p>
                 </CardContent>
                 <CardFooter>
-                  <Button variant="outline" className="w-full" asChild>
+                  <Button
+                    variant="outline"
+                    className="w-full border-2 text-green-600 border-green-300 transition-all hover:border-green-600 hover:shadow-md"
+                    asChild
+                  >
                     <Link to={`/events/${event.id}`}>
                       Ver Detalhes do Evento
                       <ArrowRight className="ml-2 h-4 w-4" />
@@ -71,9 +75,15 @@ export const ProximosEventos = () => {
             ))}
           </div>
 
-          <div className="mt-8 text-center">
-            <Button className="bg-emerald-600 hover:bg-emerald-700" asChild>
+          <div className="mt-1 flex flex-col items-center  sm:flex-row sm:justify-center">
+            <Button
+              size="lg"
+              variant="outline"
+              className="bg-gradient-to-r from-emerald-600 to-green-500 text-white border-white hover:bg-white/90 text-lg px-8 py-5 hover:scale-105 transition-transform duration-200"
+              asChild
+            >
               <Link to="/events">
+                {" "}
                 Ver Todos os Eventos
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>

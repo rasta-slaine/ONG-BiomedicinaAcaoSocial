@@ -64,6 +64,10 @@ const navigationItems: NavigationItem[] = [
     href: "/about",
   },
   {
+    title: "Transparência",
+    href: "/transparencia",
+  },
+  {
     title: "Biomedicina",
     href: "/biomedicine",
   },
@@ -119,10 +123,9 @@ export function SiteHeader() {
         <div className="flex items-center gap-6 md:gap-10">
           <Link to="/" className="flex items-center space-x-2">
             <img
-              // className="text-xl font-bold"
               src={logoImage}
-              className="h-10 w-10 rounded-full"
-              alt=""
+              alt="Logo"
+              className="h-16 w-16 rounded-full object-cover"
             />
           </Link>
 

@@ -82,7 +82,7 @@ export const LinhaDoTempoAvancosBiomedicina = () => {
                     <span className="block h-4 w-4"></span>
                   </div>
                   {index < breakthroughsTimeline.length - 1 && (
-                    <div className="h-full w-0.5 bg-blue-200"></div>
+                    <div className="h-full w-0.5 bg-green-200"></div>
                   )}
                 </div>
                 <div className="pb-8">

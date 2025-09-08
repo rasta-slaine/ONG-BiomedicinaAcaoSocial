@@ -1,294 +1,272 @@
-import { useState } from "react";
+// src/pages/AboutPage.tsx
+
+import React from "react";
 import { Link } from "react-router-dom";
-import { CheckCircle, Heart, ArrowRight, Filter } from "lucide-react";
+import { motion } from "framer-motion";
+import { Heart, Target, Handshake, Microscope, Beaker } from "lucide-react";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-
-import { Timeline } from "@/components/Timeline";
-import { Stats } from "@/components/Stats";
-import { events } from "@/mock/eventos";
+// --- DADOS COMPLETOS DA PÁGINA ---
+// Edite todas as informações da sua ONG aqui facilmente
 
 const teamMembers = [
   {
     name: "Anderson Do Nascimento",
     title: "Fundador e Diretor Executivo",
-    bio: "Biomédico dedicado à saúde pública, Anderson fundou a Biomedicina Ação Social com a visão de levar atendimento de saúde de qualidade a comunidades carentes. Sua liderança e paixão por ajudar os outros têm sido fundamentais para o crescimento da organização.",
+    bio: "Biomédico apaixonado por saúde pública, Anderson fundou a Ação Social para levar cuidado de qualidade a quem mais precisa.",
     image: "/images/Anderson Do Nascimento.png",
   },
   {
     name: "Dra. Maria Silva",
     title: "Diretora de Programas",
-    bio: "Maria supervisiona todas as iniciativas da Biomedicina Ação Social. Com formação em saúde pública, ela garante que nossos projetos criem impacto positivo duradouro nas comunidades que atendemos.",
-    image: "/placeholder.svg?height=300&width=300",
+    bio: "Com vasta experiência em saúde pública, Maria garante que nossos projetos gerem um impacto real e duradouro.",
+    image: "/images/pessoas/helena-costa.png",
   },
   {
     name: "Carlos Mendes",
     title: "Coordenador de Voluntários",
-    bio: "Carlos gerencia nossa rede de profissionais voluntários, garantindo que cada ação conte com a equipe necessária para atender às necessidades da comunidade.",
-    image: "/placeholder.svg?height=300&width=300",
+    bio: "Carlos é o coração da nossa rede de voluntários, conectando profissionais talentosos à nossa causa.",
+    image: "/images/pessoas/carlos-andrade.png",
   },
   {
     name: "Juliana Pereira",
     title: "Gerente de Parcerias",
-    bio: "Juliana desenvolve e mantém relacionamentos com parceiros estratégicos que apoiam nossa missão de levar saúde a comunidades carentes.",
-    image: "/placeholder.svg?height=300&width=300",
+    bio: "Juliana constrói as pontes com parceiros estratégicos que compartilham nossa visão de um Brasil mais saudável.",
+    image: "/images/pessoas/juliana-silva.png",
   },
 ];
 
-// Parceiros
-const partners = [
+const philosophyData = [
   {
-    name: "Universidade São Paulo",
-    category: "Educacional",
-    logo: "/images/usp.png",
+    id: "missao",
+    icon: Heart,
+    title: "Nossa Missão",
+    description:
+      "Levar saúde de qualidade, educação preventiva e cuidado multiprofissional a comunidades em situação de vulnerabilidade, transformando conhecimento em bem-estar e dignidade.",
+    color: "text-red-600",
+    bgColor: "bg-red-100",
   },
   {
-    name: "Conselho Regional de Biomedicina",
-    category: "Institucional",
-    logo: "/images/biomedicina conselho.jpeg",
+    id: "visao",
+    icon: Target,
+    title: "Nossa Visão",
+    description:
+      "Ser referência em ação social na saúde, construindo um futuro onde todos, independentemente da condição socioeconômica, tenham acesso a um padrão de vida mais saudável e justo.",
+    color: "text-blue-600",
+    bgColor: "bg-blue-100",
   },
   {
-    name: "Prefeitura de São Paulo",
-    category: "Governamental",
-    logo: "/images/cidade sao paulo.jpeg",
-  },
-  {
-    name: "Associação Comunitária de Itaquera",
-    category: "Comunitário",
-    logo: "/images/itaquera.jpg",
+    id: "valores",
+    icon: Handshake,
+    title: "Nossos Valores",
+    description:
+      "Nossas ações são guiadas pela Humanização, que coloca as pessoas no centro de tudo; pela Excelência, buscando a mais alta qualidade; e pela Colaboração, pois acreditamos que juntos somos mais fortes.",
+    color: "text-purple-600",
+    bgColor: "bg-purple-100",
   },
 ];
 
-export function AboutPage() {
-  const [timelineFilter, setTimelineFilter] = useState<string>("todos");
+const statsData = [
+  { value: "+5.000", label: "Pessoas Atendidas" },
+  { value: "10+", label: "Projetos Ativos" },
+  { value: "200+", label: "Voluntários Engajados" },
+  { value: "4", label: "Estados de Atuação" },
+];
 
-  // Filtrar eventos para a timeline
-  interface Event {
-    id: string;
-    title: string;
-    description: string;
-    date: string;
-    location: string;
-    category: string;
-    service?: number;
-    professional?: number;
-  }
+const milestones = [
+  {
+    year: "2018",
+    title: "O Início de um Sonho",
+    description:
+      "A ONG é fundada com a missão de levar saúde preventiva a comunidades carentes de São Paulo.",
+  },
+  {
+    year: "2019",
+    title: "Primeiros 1.000 Atendimentos",
+    description:
+      "Alcançamos nosso primeiro marco significativo, provando o impacto e a necessidade do nosso trabalho.",
+  },
+  {
+    year: "2021",
+    title: "Expansão Nacional",
+    description:
+      "Nossas ações ultrapassam as fronteiras de São Paulo, chegando a comunidades na Bahia, Pernambuco e Rio de Janeiro.",
+  },
+  {
+    year: "2024",
+    title: "Reconhecimento e Celebração",
+    description:
+      "Realizamos nossa 30ª Ação Social e homenageamos os voluntários que tornaram tudo isso possível.",
+  },
+];
 
-  const filteredEvents: Event[] =
-    timelineFilter === "todos"
-      ? events
-      : timelineFilter === "maiores"
-      ? events
-          .sort(
-            (a: Event, b: Event) =>
-              (b.service || 0) +
-              (b.professional || 0) -
-              ((a.service || 0) + (a.professional || 0))
-          )
-          .slice(0, 10)
-      : events.filter((event: Event) => (event.professional || 0) > 30);
+const BackgroundIcons = () => (
+  <div className="absolute inset-0 overflow-hidden">
+    <Microscope className="absolute top-[10%] left-[5%] h-32 w-32 text-white/5 rotate-12" />
+    <Beaker className="absolute bottom-[15%] right-[5%] h-32 w-32 text-white/5 -rotate-12" />
+    <Heart className="absolute top-[20%] right-[10%] h-32 w-32 text-white/5" />
+  </div>
+);
 
-  // Marcos importantes
-  const milestones = [
-    {
-      id: "inicio",
-      title: "Fundação da Biomedicina Ação Social",
-      description:
-        "Anderson Do Nascimento estabelece a ONG com a missão de combater diabetes e pressão alta em comunidades carentes.",
-      date: "2018-01-01",
-      location: "São Paulo",
-      category: "Institucional",
-    },
-    {
-      id: "1a-acao",
-      title: "Primeira Ação Social",
-      description:
-        "Realização da primeira ação social na Parada 15 de Novembro, marcando o início de uma jornada de impacto na saúde pública.",
-      date: "2018-05-12",
-      location: "Campo do ARXV (Parada 15 de Novembro)",
-      category: "Marco",
-      service: 84,
-      professional: 15,
-    },
-    {
-      id: "100-prof",
-      title: "100º Profissional Voluntário",
-      description:
-        "A ONG celebra a marca de 100 profissionais de saúde voluntários participando das ações.",
-      date: "2019-06-15",
-      location: "São Paulo",
-      category: "Marco",
-    },
-    {
-      id: "1000-atend",
-      title: "1000º Atendimento Realizado",
-      description:
-        "Marca importante que demonstra o impacto crescente das ações de saúde na comunidade.",
-      date: "2019-12-01",
-      location: "São Paulo",
-      category: "Marco",
-    },
-    {
-      id: "expansao",
-      title: "Expansão para Outros Estados",
-      description:
-        "A Biomedicina Ação Social expande suas atividades para além de São Paulo, chegando a Bahia, Pernambuco e Rio de Janeiro.",
-      date: "2021-10-01",
-      location: "Brasil",
-      category: "Expansão",
-    },
-    {
-      id: "premio",
-      title: "Reconhecimento e Premiação",
-      description:
-        "Homenagem e entrega de troféus para os Profissionais e estudantes voluntários da área da saúde.",
-      date: "2024-09-28",
-      location: "Rua Gomes Cardim (Brás)",
-      category: "Premiação",
-      professional: 78,
-    },
-    {
-      id: "30-acoes",
-      title: "30ª Ação de Saúde Social",
-      description:
-        "Celebração de um marco importante, com 30 ações de saúde realizadas em diferentes comunidades.",
-      date: "2024-09-28",
-      location: "Rua Gomes Cardim (Brás)",
-      category: "Marco",
-    },
-  ];
-
+// --- COMPONENTE PRINCIPAL DA PÁGINA "SOBRE NÓS" ---
+export function PaginaSobre() {
   return (
-    <div className="flex flex-col">
-      {/* Hero Section */}
-
-      <section className="relative bg-gradient-to-r from-emerald-600 to-green-500 py-24 text-white text-center">
-        <div className="container mx-auto px-6 max-w-4xl">
-          <h1 className="mb-6 text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl">
-            Quem Somos
+    <div className="bg-white">
+      {/* 1. HERO SECTION */}
+      <section className="relative h-[80vh] min-h-[600px] w-full flex items-center justify-center text-center text-white overflow-hidden">
+        <div className="absolute inset-0">
+          <img
+            src="/images/voluntaria-em-acao.png"
+            alt="Ação Comunitária"
+            className="absolute top-0 left-0 w-1/2 h-1/2 object-cover opacity-30"
+          />
+          <img
+            src="/images/cientista-no-laboratorio.png"
+            alt="Pesquisa Biomédica"
+            className="absolute bottom-0 right-0 w-2/3 h-2/3 object-cover opacity-30"
+          />
+          <img
+            src="/images/criancas-sorrindo.png"
+            alt="Comunidade feliz"
+            className="absolute bottom-1/4 left-10 w-1/3 h-1/3 object-cover rounded-full opacity-40"
+          />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-t from-green-800/80 via-green-700/60 to-transparent"></div>
+        <div className="relative z-10 container mx-auto px-4 flex flex-col items-center">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight drop-shadow-lg">
+            Nossa Causa é a <span className="text-green-300">Saúde</span>.
+            <br />
+            Nossa Força é a <span className="text-green-300">União</span>.
           </h1>
-          <p className="text-xl leading-relaxed">
-            Uma organização sem fins lucrativos dedicada a promover saúde e
-            qualidade de vida através de ações de prevenção e combate a diabetes
-            e hipertensão em comunidades carentes. Fundada pelo biomédico
-            Anderson Do Nascimento, nossa missão é levar atendimento de saúde de
-            qualidade a quem mais precisa.
+          <p className="mt-6 max-w-3xl text-lg md:text-xl text-green-100 leading-relaxed drop-shadow-md">
+            Somos o Instituto de Saúde Multiprofissional, um movimento que une
+            ciência e cuidado para construir um futuro mais saudável e justo
+            para as comunidades que servimos.
           </p>
         </div>
       </section>
 
-      {/* Estatísticas de Impacto */}
-      <section className="py-8 flex flex-col items-center w-full">
-        <h2 className="text-center text-3xl font-bold mb-8 ">Nosso Impacto</h2>
-        <Stats className="w-full p-8" events={events} />
-      </section>
-
-      {/* Missão e Visão */}
-      <section className="flex flex-col items-center">
-        <div className="container">
-          <div className="grid gap-8 md:grid-cols-2">
-            <Card className="">
-              <CardHeader>
-                <div className="mb-2 rounded-full p-3 w-fit">
-                  <Heart className="h-6 w-6 " />
-                </div>
-                <CardTitle className="text-2xl ">Nossa Missão</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="">
-                  A Biomedicina Ação Social trabalha para promover saúde através
-                  da prevenção e combate a diabetes e hipertensão em comunidades
-                  carentes. Nosso foco está em levar atendimento biomédico,
-                  nutricional e enfermagem de qualidade a pessoas que não têm
-                  acesso facilitado a serviços de saúde.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="">
-              <CardHeader>
-                <div className="mb-2 rounded-full  p-3 w-fit">
-                  <CheckCircle className="h-6 w-6 " />
-                </div>
-                <CardTitle className="text-2xl ">Nossa Visão</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="">
-                  Sonhamos com um Brasil onde todas as comunidades,
-                  independentemente de sua localização ou condição
-                  socioeconômica, tenham acesso a informações e atendimento de
-                  saúde preventiva, reduzindo a incidência de doenças crônicas
-                  como diabetes e hipertensão.
-                </p>
-              </CardContent>
-            </Card>
+      {/* 2. SEÇÃO DE FILOSOFIA COM ABAS INTERATIVAS */}
+      <section className="py-16 md:py-24 bg-slate-50">
+        <div className="container mx-auto px-4">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-900 tracking-tight">
+              A Essência do Nosso Trabalho
+            </h2>
+            <p className="mt-6 text-lg text-gray-600 leading-relaxed">
+              Nossa filosofia é a bússola que guia cada projeto, cada voluntário
+              e cada parceria. É o porquê por trás de tudo o que fazemos.
+            </p>
           </div>
+
+          <Tabs defaultValue="missao" className="w-full max-w-4xl mx-auto">
+            <TabsList className="grid w-full grid-cols-3 h-auto p-2 bg-gray-200/75 rounded-lg">
+              <TabsTrigger
+                value="missao"
+                className="py-3 text-base data-[state=active]:bg-white data-[state=active]:text-green-700 data-[state=active]:shadow-md"
+              >
+                Nossa Missão
+              </TabsTrigger>
+              <TabsTrigger
+                value="visao"
+                className="py-3 text-base data-[state=active]:bg-white data-[state=active]:text-green-700 data-[state=active]:shadow-md"
+              >
+                Nossa Visão
+              </TabsTrigger>
+              <TabsTrigger
+                value="valores"
+                className="py-3 text-base data-[state=active]:bg-white data-[state=active]:text-green-700 data-[state=active]:shadow-md"
+              >
+                Nossos Valores
+              </TabsTrigger>
+            </TabsList>
+
+            {philosophyData.map((item) => (
+              <TabsContent value={item.id} key={item.id} className="mt-8">
+                <div className="bg-white p-10 rounded-lg shadow-lg">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, ease: "easeOut" }}
+                    className="flex flex-col md:flex-row items-center text-center md:text-left gap-8"
+                  >
+                    <div
+                      className={`flex-shrink-0 w-fit p-4 rounded-full ${item.bgColor}`}
+                    >
+                      <item.icon className={`w-12 h-12 ${item.color}`} />
+                    </div>
+                    <div>
+                      <h3 className="text-3xl font-bold text-gray-900 mb-2">
+                        {item.title}
+                      </h3>
+                      <p className="text-lg text-gray-600 leading-relaxed">
+                        {item.description}
+                      </p>
+                    </div>
+                  </motion.div>
+                </div>
+              </TabsContent>
+            ))}
+          </Tabs>
         </div>
       </section>
 
-      {/* Nossa Equipe */}
-      <section className="py-16 flex flex-col items-center">
-        <div className="container">
-          <h2 className="mb-12 text-center text-3xl font-bold ">
-            Nossa Equipe
-          </h2>
-
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            {teamMembers.map((member, index) => (
-              <Card key={index} className="overflow-hidden border-purple-100">
-                <div className="aspect-square w-full overflow-hidden bg-purple-100">
-                  <img
-                    src={member.image || "/placeholder.svg"}
-                    alt={member.name}
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-                <CardHeader className="pb-2">
-                  <CardTitle className="">{member.name}</CardTitle>
-                  <CardDescription>{member.title}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm ">{member.bio}</p>
-                </CardContent>
-              </Card>
+      {/* 3. SEÇÃO DE IMPACTO EM NÚMEROS */}
+      <section className="bg-green-600 text-white">
+        <div className="container mx-auto px-4 py-12">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            {statsData.map((stat) => (
+              <div key={stat.label}>
+                <p className="text-4xl md:text-5xl font-extrabold">
+                  {stat.value}
+                </p>
+                <p className="text-sm md:text-base text-green-200">
+                  {stat.label}
+                </p>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Nossos Parceiros */}
-      <section className="py-16 ">
-        <div className="container">
-          <h2 className="mb-12 text-center text-3xl font-bold ">
-            Nossos Parceiros
-          </h2>
-
-          <div className="mx-auto max-w-4xl">
-            <p className="mb-8 text-center ">
-              Colaboramos com diversos parceiros que compartilham nosso
-              compromisso em promover saúde e bem-estar nas comunidades. Juntos,
-              ampliamos nosso impacto e alcançamos mais pessoas necessitadas.
+      {/* 4. SEÇÃO NOSSA JORNADA (TIMELINE) */}
+      <section className="py-16 md:py-24 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-900 tracking-tight">
+              Nossa Jornada
+            </h2>
+            <p className="mt-6 text-lg text-gray-600 leading-relaxed">
+              Desde 2018, nossa história é escrita com a dedicação de
+              voluntários e a confiança de parceiros. Cada ano representa um
+              novo capítulo de crescimento e impacto.
             </p>
-
-            <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-4">
-              {partners.map((partner, index) => (
-                <div key={index} className="flex flex-col items-center">
-                  <div className="mb-4 h-20 w-full overflow-hidden rounded-md border bg-white p-4 border-purple-100">
-                    <img
-                      src={partner.logo || "/placeholder.svg"}
-                      alt={partner.name}
-                      className="h-full w-full object-contain"
-                    />
+          </div>
+          <div className="relative max-w-4xl mx-auto">
+            <div
+              className="absolute left-1/2 -translate-x-1/2 h-full w-0.5 bg-gray-200"
+              aria-hidden="true"
+            ></div>
+            <div className="space-y-16">
+              {milestones.map((item, index) => (
+                <div
+                  key={item.year}
+                  className="relative flex items-center group"
+                >
+                  <div className="absolute left-1/2 -translate-x-1/2 w-4 h-4 bg-gray-300 rounded-full ring-8 ring-white z-10 transition-colors duration-300 group-hover:bg-green-600"></div>
+                  <div
+                    className={`w-[calc(50%-2.5rem)] p-6 bg-slate-50 rounded-lg shadow-md transition-shadow duration-300 hover:shadow-xl ${
+                      index % 2 === 0 ? "text-right" : "ml-auto text-left"
+                    }`}
+                  >
+                    <p className="font-bold text-green-600 text-lg">
+                      {item.year}
+                    </p>
+                    <h3 className="text-xl font-bold text-gray-800 mt-1">
+                      {item.title}
+                    </h3>
+                    <p className="text-gray-500 mt-2">{item.description}</p>
                   </div>
-                  <h3 className="text-center font-medium ">{partner.name}</h3>
-                  <p className="text-center text-sm ">{partner.category}</p>
                 </div>
               ))}
             </div>
@@ -296,82 +274,66 @@ export function AboutPage() {
         </div>
       </section>
 
-      {/* Nossa História - Timeline */}
-      <section className="py-16 ">
-        <div className="container">
-          <h2 className="mb-8 text-center text-3xl font-bold ">
-            Nossa Jornada
-          </h2>
-
-          <div className="mx-auto max-w-4xl mb-10">
-            <p className="text-center mb-8">
-              Desde 2018, a Biomedicina Ação Social tem trabalhado
-              incansavelmente para levar saúde e bem-estar a comunidades em todo
-              o Brasil. Nossa jornada é marcada por dedicação, crescimento e
-              impacto positivo na vida das pessoas.
+      {/* 5. SEÇÃO DE EQUIPE */}
+      <section className="py-16 md:py-24 bg-slate-50">
+        <div className="container mx-auto px-4">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-900 tracking-tight">
+              Nossa Liderança
+            </h2>
+            <p className="mt-6 text-lg text-gray-600 leading-relaxed">
+              Conheça as pessoas que guiam nossa organização com paixão,
+              expertise e um compromisso inabalável com a nossa missão.
             </p>
-
-            <div className="mb-8">
-              <h3 className="text-xl font-bold mb-4">Marcos Importantes</h3>
-              <Timeline events={milestones} />
-            </div>
-
-            <div className="flex justify-between items-center mb-4">
-              <h3 className="text-xl font-bold ">Histórico de Ações</h3>
-
-              <div className="flex items-center gap-2">
-                <Filter className="h-4 w-4 " />
-                <select
-                  value={timelineFilter}
-                  onChange={(e) => setTimelineFilter(e.target.value)}
-                  className="text-sm border rounded-md py-1 px-2 "
-                >
-                  <option value="todos">Todas as ações</option>
-                  <option value="maiores">10 maiores ações</option>
-                  <option value="profissionais">
-                    Ações com mais voluntários
-                  </option>
-                </select>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {teamMembers.map((member) => (
+              <div key={member.name} className="group text-center">
+                <div className="relative w-48 h-48 mx-auto rounded-full overflow-hidden shadow-lg transition-transform duration-300 group-hover:scale-105">
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <h3 className="mt-6 text-xl font-bold text-gray-900">
+                  {member.name}
+                </h3>
+                <p className="text-green-600 font-medium">{member.title}</p>
+                <p className="mt-2 text-sm text-gray-500">{member.bio}</p>
               </div>
-            </div>
-
-            <Timeline events={filteredEvents} />
+            ))}
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="bg-gradient-to-r from-purple-700 to-purple-900 py-16 text-white">
-        <div className="container">
-          <div className="mx-auto max-w-3xl text-center">
-            <h2 className="mb-4 text-3xl font-bold">Faça Parte desta Missão</h2>
-            <p className="mb-8 text-lg">
-              Juntos, podemos transformar a vida de milhares de pessoas levando
-              saúde preventiva às comunidades. Seja como doador, voluntário ou
-              parceiro, seu apoio é fundamental para continuarmos fazendo a
-              diferença.
-            </p>
-            <div className="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-x-4 sm:space-y-0">
-              <Button size="lg" variant="secondary" asChild>
-                <Link to="/donate">Faça uma Doação</Link>
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="bg-white/10 text-white hover:bg-white/20 border-white/30"
-                asChild
-              >
-                <Link to="/contact">
-                  Seja Voluntário
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
-            </div>
+      {/* 6. SEÇÃO FINAL DE CTA */}
+      <section className="relative bg-green-600 text-white text-center py-20 md:py-24 overflow-hidden">
+        <BackgroundIcons />
+        <div className="relative z-10 container mx-auto px-4">
+          <h2 className="text-4xl font-extrabold tracking-tight">
+            Faça Parte da Nossa História
+          </h2>
+          <p className="mt-6 max-w-2xl mx-auto text-lg text-green-100">
+            Juntos, podemos continuar escrevendo capítulos de esperança e saúde.
+            Seja como voluntário, parceiro ou doador, seu apoio é fundamental.
+          </p>
+          <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4">
+            <Link
+              to="/voluntariado"
+              className="inline-block bg-white text-green-700 font-bold py-3 px-8 rounded-full hover:bg-green-50 transition-colors"
+            >
+              Seja Voluntário
+            </Link>
+            <Link
+              to="/doacao"
+              className="inline-block bg-transparent border-2 border-white text-white font-bold py-3 px-8 rounded-full hover:bg-white hover:text-green-700 transition-colors"
+            >
+              Faça uma Doação
+            </Link>
           </div>
         </div>
       </section>
     </div>
   );
 }
-
-export default AboutPage;

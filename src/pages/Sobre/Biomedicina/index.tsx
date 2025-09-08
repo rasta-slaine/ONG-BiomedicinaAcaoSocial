@@ -1,142 +1,294 @@
-import { Microscope, GraduationCap, Beaker } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+// src/pages/HistoriaBiomedicinaPage.tsx
 
-import { Faq, FaqData } from "@/components/Faq";
-import { AreasDePesquisa } from "./components/AreasDePesquisa";
-import { LinhaDoTempoAvancosBiomedicina } from "./components/LinhaDoTempoAvancosBiomedicina";
-import { CarreirasBiomedicina } from "./components/CarreirasBiomedicina";
-//import { ProjetosDePesquisaAtual } from "./components/ProjetosDePesquisaAtual";
-import { Recursos } from "./components/Recursos";
-import { CtaB } from "./components/Ctab";
-//import { ProximosEventos } from "./components/ProximosEventos";
+import React from "react";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import {
+  Dna,
+  FlaskConical,
+  Microscope,
+  Stethoscope,
+  BrainCircuit,
+  Syringe,
+  Briefcase,
+} from "lucide-react";
 
-// Perguntas frequentes sobre biomedicina
-const biomedicineFAQs: FaqData[] = [
+// --- DADOS DA PÁGINA ---
+const timelineData = [
   {
-    quest: "O que é biomedicina?",
-    answer:
-      "Biomedicina é um ramo da ciência médica que aplica princípios biológicos e fisiológicos à prática clínica. Abrange o estudo do corpo humano, doenças e o desenvolvimento de tratamentos e tecnologias para melhorar os resultados de saúde. A biomedicina integra disciplinas como bioquímica, biologia molecular, genética, imunologia e farmacologia para compreender os mecanismos das doenças e desenvolver intervenções eficazes.",
+    ano: "1928",
+    titulo: "Descoberta da Penicilina",
+    descricao:
+      "Alexander Fleming descobre o primeiro antibiótico, revolucionando o tratamento de infecções bacterianas e inaugurando uma nova era na medicina.",
+    icone: FlaskConical,
   },
   {
-    quest: "Como a pesquisa biomédica beneficia a sociedade?",
-    answer:
-      "A pesquisa biomédica leva a novos tratamentos, vacinas, ferramentas de diagnóstico e estratégias preventivas que melhoram a saúde humana e a longevidade. Contribuiu para o aumento da expectativa de vida, redução da mortalidade infantil, melhor gestão de doenças crônicas e melhoria da qualidade de vida para milhões de pessoas em todo o mundo. Além dos benefícios diretos à saúde, os avanços biomédicos também reduzem os custos de saúde, aumentam a produtividade e impulsionam o crescimento econômico através dos setores de saúde e biotecnologia.",
+    ano: "1953",
+    titulo: "A Estrutura do DNA",
+    descricao:
+      "Watson e Crick desvendam a estrutura de dupla hélice do DNA, abrindo as portas para a genética molecular e a engenharia genética.",
+    icone: Dna,
   },
   {
-    quest: "Qual educação é necessária para uma carreira em biomedicina?",
-    answer:
-      "Os requisitos educacionais variam dependendo da trajetória de carreira específica. Posições de pesquisa geralmente exigem doutorado em ciências biomédicas ou áreas relacionadas. Funções clínicas podem exigir diploma de medicina (MD/DO) com treinamento especializado. Posições técnicas frequentemente requerem bacharelado ou mestrado em áreas como engenharia biomédica, biotecnologia ou ciências laboratoriais. Muitas posições também exigem educação continuada para se manter atualizado com tecnologias e metodologias em rápida evolução.",
+    ano: "1983",
+    titulo: "Invenção do PCR",
+    descricao:
+      "Kary Mullis desenvolve a Reação em Cadeia da Polimerase (PCR), uma técnica que permite amplificar pequenas amostras de DNA, transformando o diagnóstico e a pesquisa forense.",
+    icone: Microscope,
   },
   {
-    quest: "Quais são os maiores desafios da biomedicina hoje?",
-    answer:
-      "Os desafios atuais incluem o desenvolvimento de tratamentos para doenças complexas como câncer e Alzheimer, o combate à resistência antimicrobiana, garantir acesso equitativo a avanços médicos globalmente, gerenciar considerações éticas de novas tecnologias como edição genética e traduzir eficientemente descobertas laboratoriais em aplicações clínicas. Além disso, o campo enfrenta desafios no gerenciamento de dados, colaboração interdisciplinar e financiamento sustentável para iniciativas de pesquisa de longo prazo.",
+    ano: "2003",
+    titulo: "Projeto Genoma Humano",
+    descricao:
+      "A sequência completa do genoma humano é mapeada, oferecendo um roteiro sem precedentes para entender doenças e desenvolver medicinas personalizadas.",
+    icone: BrainCircuit,
   },
   {
-    quest: "Como a tecnologia está mudando a biomedicina?",
-    answer:
-      "A tecnologia está transformando a biomedicina através de avanços como inteligência artificial para descoberta de medicamentos e diagnóstico por imagem, análise de big data para identificar padrões de doenças, medicina de precisão adaptada a perfis genéticos individuais, bioimpressão 3D de tecidos e órgãos, nanomedicina para entrega direcionada de medicamentos e telemedicina para prestação de cuidados de saúde remotos. Essas tecnologias estão acelerando a pesquisa, melhorando a precisão diagnóstica, permitindo tratamentos personalizados e expandindo o acesso à saúde.",
+    ano: "2020",
+    titulo: "Vacinas de mRNA",
+    descricao:
+      "O desenvolvimento e a implementação recorde de vacinas de RNA mensageiro contra a COVID-19 demonstram o poder da biotecnologia moderna.",
+    icone: Syringe,
   },
 ];
 
-export const BiomedicinePage = () => {
+const areasPesquisa = [
+  {
+    titulo: "Terapia Genética",
+    descricao:
+      "Corrigindo ou substituindo genes defeituosos para tratar doenças hereditárias na sua origem.",
+  },
+  {
+    titulo: "Imunoterapia",
+    descricao:
+      "Utilizando o próprio sistema imunológico do corpo para combater doenças como o câncer.",
+  },
+  {
+    titulo: "Medicina Regenerativa",
+    descricao:
+      "Desenvolvendo tecidos e órgãos em laboratório para substituir partes do corpo danificadas.",
+  },
+  {
+    titulo: "Neurociência Computacional",
+    descricao:
+      "Mapeando o cérebro para entender e tratar distúrbios neurológicos e psiquiátricos.",
+  },
+];
+
+const carreirasData = [
+  {
+    titulo: "Análises Clínicas",
+    descricao:
+      "Realiza exames laboratoriais essenciais para o diagnóstico e acompanhamento de doenças.",
+  },
+  {
+    titulo: "Pesquisa Científica",
+    descricao:
+      "Atua na fronteira do conhecimento, buscando novas curas e entendimentos sobre a vida.",
+  },
+  {
+    titulo: "Indústria Farmacêutica",
+    descricao:
+      "Desenvolve e testa novos medicamentos, garantindo sua segurança e eficácia.",
+  },
+  {
+    titulo: "Genética Forense",
+    descricao:
+      "Aplica técnicas de análise de DNA para auxiliar em investigações criminais.",
+  },
+];
+
+const MotionSection = ({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) => {
+  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
   return (
-    <div className="flex flex-col">
-      <section className="relative bg-gradient-to-r from-emerald-600 to-green-500 py-24 text-white text-center">
-        <div className="container mx-auto px-6 max-w-4xl">
-          <h1 className="mb-6 text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl">
-            Biomedicina: Avançando a Saúde Através da Ciência
+    <motion.section
+      ref={ref}
+      initial={{ opacity: 0, y: 50 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      className={className}
+    >
+      {children}
+    </motion.section>
+  );
+};
+
+const img = "/images/Biomedicina_banner_img.png";
+
+// --- COMPONENTE PRINCIPAL ---
+export function BiomedicinePage() {
+  return (
+    <div className="bg-white">
+      {/* 1. HERO SECTION */}
+      <section className="relative h-[60vh] min-h-[500px] w-full flex items-center text-white">
+        <div className="absolute inset-0">
+          <img
+            src={img}
+            alt="Montagem de imagens representando a história da biomedicina"
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-t from-green-900/80 via-green-800/60 to-transparent"></div>
+        <div className="relative z-10 container mx-auto px-4 text-center">
+          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight drop-shadow-lg">
+            A Jornada da Biomedicina
           </h1>
-          <p className="text-xl leading-relaxed">
-            Explorando a interseção entre ciência biológica e prática médica
-            para desenvolver soluções inovadoras para desafios globais de saúde
-            e melhorar vidas em todo o mundo.
+          <p className="mt-6 max-w-3xl mx-auto text-lg md:text-xl text-green-100 leading-relaxed drop-shadow-md">
+            Da descoberta de um fungo em uma placa de Petri à edição do código
+            da vida. Explore a história que transformou a medicina e moldou o
+            futuro da saúde humana.
           </p>
         </div>
       </section>
 
-      {/* Seção de Introdução */}
+      {/* 2. INTRODUÇÃO "O QUE É" */}
       <section className="py-16 md:py-24">
-        <div className="w-full flex flex-col justify-center">
-          <div className="mx-auto max-w-3xl text-center">
-            <h2 className="mb-6 text-3xl font-bold tracking-tight md:text-4xl">
-              O que é Biomedicina?
+        <div className="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <h2 className="text-4xl font-extrabold text-gray-900 tracking-tight">
+              A Ponte Entre a Ciência e a Vida
             </h2>
-            <p className="mb-6 text-lg text-muted-foreground">
-              A biomedicina é um campo na interseção da biologia e medicina que
-              aplica princípios biológicos e de ciências naturais à prática
-              clínica. Abrange uma ampla gama de disciplinas, incluindo
-              bioquímica, genética, imunologia, neurociência, farmacologia e
-              engenharia biomédica.
+            <p className="mt-6 text-lg text-gray-600 leading-relaxed">
+              Biomedicina é o campo da ciência que aplica os princípios da
+              biologia e da química para a prática médica. É a força motriz por
+              trás dos diagnósticos precisos, dos tratamentos inovadores e do
+              nosso entendimento sobre o corpo humano.
             </p>
-            <p className="text-lg text-muted-foreground">
-              Por meio de pesquisa científica rigorosa e aplicação clínica, a
-              biomedicina busca compreender o corpo humano, os mecanismos das
-              doenças e desenvolver tratamentos inovadores, diagnósticos e
-              estratégias preventivas para melhorar os resultados de saúde em
-              todo o mundo.
+            <p className="mt-4 text-lg text-gray-600 leading-relaxed">
+              Do microscópio ao sequenciador de DNA, o biomédico é o detetive
+              que investiga as causas das doenças, o engenheiro que projeta
+              novas terapias e o guardião da qualidade nos laboratórios que
+              apoiam a saúde de todos.
             </p>
           </div>
-
-          <div className="mt-16 grid gap-4 md:grid-cols-3 p-8">
-            <Card className="border-2 border-green-100 transition-all hover:border-green-300 hover:shadow-md">
-              <CardHeader className="pb-2">
-                <div className="mb-4 rounded-full bg-green-100 p-3 w-fit">
-                  <Microscope className="h-6 w-6 text-green-600" />
-                </div>
-                <CardTitle>Pesquisa & Descoberta</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">
-                  Investigando processos biológicos fundamentais e mecanismos de
-                  doenças para desenvolver novos conhecimentos e identificar
-                  potenciais alvos terapêuticos.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-2 border-green-100 transition-all hover:border-green-300 hover:shadow-md">
-              <CardHeader className="pb-2">
-                <div className="mb-4 rounded-full bg-green-100 p-3 w-fit">
-                  <Beaker className="h-6 w-6 text-green-600" />
-                </div>
-                <CardTitle>Translação & Aplicação</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">
-                  Transformando descobertas científicas em aplicações práticas
-                  como medicamentos, vacinas, dispositivos médicos e ferramentas
-                  de diagnóstico.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-2 border-green-100 transition-all hover:border-green-300 hover:shadow-md">
-              <CardHeader className="pb-2">
-                <div className="mb-4 rounded-full bg-green-100 p-3 w-fit">
-                  <GraduationCap className="h-6 w-6 text-green-600" />
-                </div>
-                <CardTitle>Educação & Treinamento</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">
-                  Preparando a próxima geração de cientistas biomédicos,
-                  pesquisadores e profissionais de saúde para avançar o campo e
-                  melhorar a saúde global.
-                </p>
-              </CardContent>
-            </Card>
+          <div className="grid grid-cols-2 gap-6">
+            <div className="bg-slate-50 p-6 rounded-lg text-center">
+              <Microscope className="w-10 h-10 mx-auto text-green-600 mb-2" />
+              <p className="font-semibold">Diagnóstico</p>
+            </div>
+            <div className="bg-slate-50 p-6 rounded-lg text-center">
+              <Dna className="w-10 h-10 mx-auto text-green-600 mb-2" />
+              <p className="font-semibold">Pesquisa</p>
+            </div>
+            <div className="bg-slate-50 p-6 rounded-lg text-center">
+              <Syringe className="w-10 h-10 mx-auto text-green-600 mb-2" />
+              <p className="font-semibold">Tratamento</p>
+            </div>
+            <div className="bg-slate-50 p-6 rounded-lg text-center">
+              <Stethoscope className="w-10 h-10 mx-auto text-green-600 mb-2" />
+              <p className="font-semibold">Prevenção</p>
+            </div>
           </div>
         </div>
       </section>
 
-      <AreasDePesquisa />
-      <LinhaDoTempoAvancosBiomedicina />
-      <CarreirasBiomedicina />
-      <Recursos />
+      {/* 3. TIMELINE DE AVANÇOS */}
+      <MotionSection className="py-16 md:py-24 bg-slate-50">
+        <div className="container mx-auto px-4">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-900">
+              Uma Jornada de Descobertas
+            </h2>
+            <p className="mt-6 text-lg text-gray-600">
+              A história da biomedicina é marcada por marcos que redefiniram os
+              limites da medicina.
+            </p>
+          </div>
+          <div className="relative max-w-4xl mx-auto">
+            <div
+              className="absolute left-4 md:left-1/2 -translate-x-1/2 h-full w-1 bg-green-200"
+              aria-hidden="true"
+            ></div>
+            <div className="space-y-12">
+              {timelineData.map((item) => (
+                <div
+                  key={item.ano}
+                  className="relative flex items-start md:items-center group"
+                >
+                  <div className="absolute left-4 md:left-1/2 -translate-x-1/2 w-8 h-8 bg-white rounded-full border-4 border-green-200 flex items-center justify-center z-10 transition-colors duration-300 group-hover:border-green-600">
+                    <item.icone className="w-4 h-4 text-green-600" />
+                  </div>
+                  <div className="w-full md:w-[calc(50%-2rem)] p-6 bg-white rounded-lg shadow-md ml-12 md:ml-0 md:[&:nth-child(even)]:ml-auto">
+                    <p className="font-bold text-green-600 text-lg">
+                      {item.ano}
+                    </p>
+                    <h3 className="text-xl font-bold text-gray-800 mt-1">
+                      {item.titulo}
+                    </h3>
+                    <p className="text-gray-500 mt-2">{item.descricao}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </MotionSection>
 
-      <Faq data={biomedicineFAQs} />
-      <CtaB />
+      {/* 4. ÁREAS-CHAVE DE PESQUISA */}
+      <MotionSection className="py-16 md:py-24">
+        <div className="container mx-auto px-4">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-900">
+              Fronteiras da Pesquisa
+            </h2>
+            <p className="mt-6 text-lg text-gray-600">
+              Hoje, a biomedicina avança em campos que antes pareciam ficção
+              científica. Estas são algumas das áreas mais promissoras.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {areasPesquisa.map((area) => (
+              <div
+                key={area.titulo}
+                className="bg-slate-50 p-8 rounded-lg border-l-4 border-green-500"
+              >
+                <h3 className="text-2xl font-bold text-gray-900 mb-3">
+                  {area.titulo}
+                </h3>
+                <p className="text-gray-600">{area.descricao}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </MotionSection>
+
+      {/* 5. CARREIRAS DO FUTURO */}
+      <MotionSection className="py-16 md:py-24 bg-slate-50">
+        <div className="container mx-auto px-4">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-900">
+              Carreiras do Futuro, Hoje
+            </h2>
+            <p className="mt-6 text-lg text-gray-600">
+              A biomedicina oferece um leque diversificado de carreiras de alto
+              impacto, essenciais para o ecossistema da saúde.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {carreirasData.map((carreira) => (
+              <div key={carreira.titulo} className="group [perspective:1000px]">
+                <div className="relative h-48 w-full rounded-xl shadow-lg transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+                  <div className="absolute inset-0 bg-green-600 rounded-xl flex flex-col items-center justify-center p-6">
+                    <Briefcase className="w-10 h-10 text-white mb-2" />
+                    <h3 className="text-xl font-bold text-white text-center">
+                      {carreira.titulo}
+                    </h3>
+                  </div>
+                  <div className="absolute inset-0 bg-white rounded-xl p-6 text-center [transform:rotateY(180deg)] [backface-visibility:hidden]">
+                    <p className="text-gray-600">{carreira.descricao}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </MotionSection>
     </div>
   );
-};
+}
