@@ -1,6 +1,3 @@
-// src/components/TopHeader.tsx
-
-import React, { useState } from "react";
 import { Home } from "lucide-react";
 
 // 1. DADOS DE TRADUÇÃO

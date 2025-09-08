@@ -20,20 +20,20 @@ import { TransparencyPage } from "./pages/Transparencia/index";
 import { FormularioInscricao } from "./pages/Premiacao/components/FormularioInscricao";
 //import { Navbar } from "./components/Navbar";
 import { ResponsiveNavbar } from "./components/ResponsiveNavbar";
-import { ProjetoBiomedicinaAcaoSocial } from "./Pages/Projetos/1.ProjetoBiomedicinaAcaoSocial/index";
-import { ProjetoPsicologiaAcaoSocial } from "./Pages/Projetos/3.ProjetoPsicologiaAcaoSocial/Index";
-import { ProjetoEmfermagemAcaoSocial } from "./Pages/Projetos/2.ProjetoEnfermagemAcaoSocial/Index";
-import { ProjetoFarmaciaAcaoSocial } from "./Pages/Projetos/4.ProjetoFarmaciaAcaoSocial/Index";
-import { ProjetoFisioterapiaAcaoSocial } from "./Pages/Projetos/5.ProjetoFisiterapiaAcaoSocial/Index";
-import { ProjetoNutricaoAcaoSocial } from "./Pages/Projetos/6.ProjetoNutricaoAcaoSocial/Index";
-import { ProjetoVeterinariaAcaoSocial } from "./Pages/Projetos/7.ProjetoVeterinariaAcaoSocial/Index";
-import { ProjetoMedicinaAcaoSocial } from "./Pages/Projetos/8.ProjetoMedicinaAcaoSocial/Index";
-import { ProjetoAcupunturaAcaoSocial } from "./Pages/Projetos/9.ProjetoAcupunturaAcaoSocial/Index";
-import { ProjetoOdontologiaAcaoSocial } from "./Pages/Projetos/10.ProjetoOdontologiaAcaoSocial/Index";
-import { ProjetoTampinhas } from "./Pages/Projetos/Tampinhas/Index";
-import { ProjetoProgramaCuidar } from "./Pages/Projetos/ProgramaCuidar/Index";
-import { ProjetoDoarMedicamentos } from "./Pages/Projetos/Medicamentos/DoacaoMedicamentos";
-import { ProjetoDescarteConsciente } from "./Pages/Projetos/Medicamentos/DescarteMedicamentos";
+import { ProjetoBiomedicinaAcaoSocial } from "./pages/Projetos/1.ProjetoBiomedicinaAcaoSocial/index";
+import { ProjetoPsicologiaAcaoSocial } from "./pages/Projetos/3.ProjetoPsicologiaAcaoSocial/Index";
+import { ProjetoEmfermagemAcaoSocial } from "./pages/Projetos/2.ProjetoEnfermagemAcaoSocial/Index";
+import { ProjetoFarmaciaAcaoSocial } from "./pages/Projetos/4.ProjetoFarmaciaAcaoSocial/Index";
+import { ProjetoFisioterapiaAcaoSocial } from "./pages/Projetos/5.ProjetoFisiterapiaAcaoSocial/Index";
+import { ProjetoNutricaoAcaoSocial } from "./pages/Projetos/6.ProjetoNutricaoAcaoSocial/Index";
+import { ProjetoVeterinariaAcaoSocial } from "./pages/Projetos/7.ProjetoVeterinariaAcaoSocial/Index";
+import { ProjetoMedicinaAcaoSocial } from "./pages/Projetos/8.ProjetoMedicinaAcaoSocial/Index";
+import { ProjetoAcupunturaAcaoSocial } from "./pages/Projetos/9.ProjetoAcupunturaAcaoSocial/Index";
+import { ProjetoOdontologiaAcaoSocial } from "./pages/Projetos/10.ProjetoOdontologiaAcaoSocial/Index";
+import { ProjetoTampinhas } from "./pages/Projetos/Tampinhas/Index";
+import { ProjetoProgramaCuidar } from "./pages/Projetos/ProgramaCuidar/Index";
+import { ProjetoDoarMedicamentos } from "./pages/Projetos/Medicamentos/DoacaoMedicamentos";
+import { ProjetoDescarteConsciente } from "./pages/Projetos/Medicamentos/DescarteMedicamentos";
 
 export default function App() {
   return (
