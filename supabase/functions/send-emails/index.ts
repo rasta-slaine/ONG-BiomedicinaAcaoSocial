@@ -3,7 +3,7 @@
 
 // para salvar a atualização do código, use:
 // npx supabase functions deploy send-emails --no-verify-jwtnpx supabase functions deploy send-emails --no-verify-jwt
-
+/*
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { Resend } from "https://esm.sh/resend@3.2.0";
 
@@ -94,3 +94,6 @@ serve(async (req) => {
     });
   }
 });
+
+
+*/
