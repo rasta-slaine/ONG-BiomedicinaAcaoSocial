@@ -90,7 +90,7 @@ const StatCounter = ({
 };
 
 // Renderiza a fatia ativa (maior) do gráfico de rosca
-const ActiveShape = (props: unknown) => {
+const ActiveShape = (props: any) => {
   const {
     cx,
     cy,
