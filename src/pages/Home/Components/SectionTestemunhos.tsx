@@ -148,7 +148,7 @@ export function SectionTestemunhos() {
   return (
     <section className="relative bg-green-600 py-16 sm:py-24 overflow-hidden">
       {/* Estilos para o Embla Carousel (sem alterações) */}
-      <style jsx global>{`
+      <style>{`
         .embla {
           overflow: hidden;
         }
