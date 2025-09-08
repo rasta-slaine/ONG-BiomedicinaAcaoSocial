@@ -1,4 +1,3 @@
-import React from "react";
 import CountUp from "react-countup";
 import { useInView } from "react-intersection-observer";
 import { Link } from "react-router-dom";
@@ -14,7 +13,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-import { CtaVoluntarioEDoacao } from "@/components/cta-voluntario-e-doacao";
+import { CtaVoluntarioEDoacao } from "@/components/Cta-Voluntario-e-Doacao";
 
 // --- DADOS DA PÁGINA ---
 const pilares = [

@@ -1,6 +1,3 @@
-// src/components/CtaProgramaCuidar.tsx
-
-import React from "react";
 import { Link } from "react-router-dom";
 import { HandHeart, ArrowRight } from "lucide-react";
 

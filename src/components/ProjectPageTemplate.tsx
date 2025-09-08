@@ -7,7 +7,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { CtaVoluntarioEDoacao } from "@/components/cta-voluntario-e-doacao";
+import { CtaVoluntarioEDoacao } from "@/components/Cta-Voluntario-e-Doacao";
 
 // --- TIPOS DE DADOS PARA O TEMPLATE ---
 // Define a "forma" dos dados que cada página de projeto precisa ter

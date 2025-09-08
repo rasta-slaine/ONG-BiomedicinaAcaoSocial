@@ -1,6 +1,3 @@
-// src/pages/SasusPage.tsx
-
-import React from "react";
 import { Link } from "react-router-dom";
 import CountUp from "react-countup";
 import { useInView } from "react-intersection-observer";

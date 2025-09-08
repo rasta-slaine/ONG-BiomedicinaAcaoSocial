@@ -1,6 +1,3 @@
-// src/pages/AboutPage.tsx
-
-import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Heart, Target, Handshake, Microscope, Beaker } from "lucide-react";
