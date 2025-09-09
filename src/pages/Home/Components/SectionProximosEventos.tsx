@@ -115,7 +115,7 @@ export const SectionProximosEventos = () => {
           <h2 className="text-5xl  sm:text-7xl font-extrabold text-gray-900 tracking-tight">
             Próximos Eventos
           </h2>
-          <div className="mt-6 mb-8 w-200 h-1.5 bg-green-500 rounded-full"></div>
+          <div className="mt-6 mb-8 w-auto h-1.5 bg-green-500 rounded-full sm:w-0.5"></div>
           <p className="mt-4 text-lg text-gray-600 leading-relaxed">
             Participe de nossas ações, workshops e mutirões. Sua presença
             fortalece nossa comunidade e transforma vidas.

@@ -125,14 +125,14 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 // --- Componente Principal da Grade ---
 export function ProjectsGrid() {
   return (
-    <section className=" mt-[-100px] py-1 sm:py-24">
+    <section className=" mt-[-100px] py-1 sm:p-6">
       <div className="container mx-auto">
         {/* Texto Introdutório */}
-        <div className="max-w-4xl mx-auto text-left mb-12">
+        <div className="max-w-4xl mx-auto text-left mb-12 sm:mt-6">
           <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-900">
             Nossas Frentes de Atuação
           </h2>
-          <p className="mt-4 text-lg text-gray-600 leading-relaxed">
+          <p className="mt-4 text-lg text-gray-600 leading-relaxed sm:p-2">
             Nossos projetos são o coração da nossa missão. Cada um deles
             representa um compromisso com a saúde, o bem-estar e o
             desenvolvimento de nossas comunidades. Através da dedicação de
@@ -142,7 +142,7 @@ export function ProjectsGrid() {
         </div>
 
         {/* Grade de Projetos */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-5">
+        <div className="grid grid-cols-1 p-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-5">
           {projectsData.map((project) => (
             <ProjectCard key={project.id} {...project} />
           ))}
