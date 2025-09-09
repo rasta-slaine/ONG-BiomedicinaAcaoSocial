@@ -115,7 +115,7 @@ export function SasusPage() {
             </p>
             <div className="mt-10 flex flex-col sm:flex-row items-start gap-4">
               <a
-                href="/sasus/agendamento"
+                href="/sasus-agendamento"
                 className="inline-block bg-white text-green-700 font-bold py-3 px-8 rounded-full hover:bg-green-50 transition-colors text-center"
               >
                 Agendar Atendimento

@@ -18,7 +18,7 @@ const sectionData = {
       description:
         "Um gesto de cuidado. Medicamentos que você não usa mais, dentro da validade e lacrados, podem ser essenciais para o tratamento de alguém em nossas comunidades que não tem condições de comprá-los.",
       buttonText: "Encontrar Pontos de Coleta",
-      buttonHref: "/programas/medicamentos-doacao",
+      buttonHref: "/doar-medicamento",
       colorTheme: {
         iconBg: "bg-blue-50",
         iconText: "text-blue-600",
@@ -31,7 +31,7 @@ const sectionData = {
       description:
         "Um gesto de proteção. Jogar remédios no lixo comum ou no esgoto contamina o solo e a água, e é uma das principais causas do surgimento de bactérias multirresistentes (superbactérias), um grave risco para a saúde de todos.",
       buttonText: "Aprender a Descartar",
-      buttonHref: "/programas/medicamentos-descarte",
+      buttonHref: "/descarte-consciente",
       colorTheme: {
         iconBg: "bg-red-50",
         iconText: "text-red-600",

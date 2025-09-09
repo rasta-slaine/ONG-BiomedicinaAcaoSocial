@@ -58,66 +58,56 @@ export default function App() {
             <Route path="/impact-awards" element={<ImpactAwardsPage />} />
             <Route path="/transparencia" element={<TransparencyPage />} />
             <Route path="/sasus" element={<SasusPage />} />
-            <Route path="/sasus/agendamento" element={<SasusAgendamento />} />
+            <Route path="/sasus-agendamento" element={<SasusAgendamento />} />
             <Route path="/dr-dacio-campos" element={<DrDacioCamposPage />} />
             <Route
-              path="/premio-dacio-campos/inscricao"
+              path="/premio-dacio-campos-inscricao"
               element={<FormularioInscricao />}
             />
-            <Route path="/inscricao" element={<FormularioInscricao />} />
-            <Route path="/projetos/tampinhas" element={<ProjetoTampinhas />} />
+            <Route path="/tampinha-do-bem" element={<ProjetoTampinhas />} />
             <Route
-              path="/projetos/programa-cuidar"
+              path="/programa-cuidar"
               element={<ProjetoProgramaCuidar />}
             />
             <Route
-              path="/programas/medicamentos-doacao"
+              path="/doar-medicamento"
               element={<ProjetoDoarMedicamentos />}
             />
             <Route
-              path="/programas/medicamentos-descarte"
+              path="/descarte-consciente"
               element={<ProjetoDescarteConsciente />}
             />
 
             <Route
-              path="/projetos/biomedicina"
+              path="/biomedicina"
               element={<ProjetoBiomedicinaAcaoSocial />}
             />
             <Route path="/biomedicine" element={<BiomedicinePage />} />
             <Route
-              path="/projetos/enfermagem"
+              path="/enfermagem"
               element={<ProjetoEmfermagemAcaoSocial />}
             />
             <Route
-              path="/projetos/psicologia"
+              path="/psicologia"
               element={<ProjetoPsicologiaAcaoSocial />}
             />
+            <Route path="/farmacia" element={<ProjetoFarmaciaAcaoSocial />} />
             <Route
-              path="/projetos/farmacia"
-              element={<ProjetoFarmaciaAcaoSocial />}
-            />
-            <Route
-              path="/projetos/fisioterapia"
+              path="/fisioterapia"
               element={<ProjetoFisioterapiaAcaoSocial />}
             />
+            <Route path="/nutricao" element={<ProjetoNutricaoAcaoSocial />} />
             <Route
-              path="/projetos/nutricao"
-              element={<ProjetoNutricaoAcaoSocial />}
-            />
-            <Route
-              path="/projetos/veterinaria"
+              path="/veterinaria"
               element={<ProjetoVeterinariaAcaoSocial />}
             />
+            <Route path="/medicina" element={<ProjetoMedicinaAcaoSocial />} />
             <Route
-              path="/projetos/medicina"
-              element={<ProjetoMedicinaAcaoSocial />}
-            />
-            <Route
-              path="/projetos/acupuntura"
+              path="/acupuntura"
               element={<ProjetoAcupunturaAcaoSocial />}
             />
             <Route
-              path="/projetos/odontologia"
+              path="/odontologia"
               element={<ProjetoOdontologiaAcaoSocial />}
             />
           </Routes>

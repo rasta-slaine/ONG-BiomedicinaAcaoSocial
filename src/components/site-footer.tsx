@@ -24,11 +24,11 @@ const navLinks = [
 ];
 
 const projectLinks = [
-  { href: "/projetos/biomedicina", label: "Biomedicina Ação Social" },
-  { href: "/projetos/enfermagem", label: "Enfermagem Ação Social" },
-  { href: "/projetos/psicologia", label: "Psicologia Ação Social" },
-  { href: "/projetos/farmacia", label: "Farmácia Ação Social" },
-  { href: "/projetos/fisioterapia", label: "Fisioterapia Ação Social" },
+  { href: "/biomedicina", label: "Biomedicina Ação Social" },
+  { href: "/enfermagem", label: "Enfermagem Ação Social" },
+  { href: "/psicologia", label: "Psicologia Ação Social" },
+  { href: "/farmacia", label: "Farmácia Ação Social" },
+  { href: "/fisioterapia", label: "Fisioterapia Ação Social" },
   // Adicione outros projetos se desejar
 ];
 const programLinks = [

@@ -69,7 +69,7 @@ export function SectionSasus() {
               transition={{ duration: 0.5, delay: 1.4 }}
             >
               <a
-                href="/projetos"
+                href="/sasus"
                 className="w-full sm:w-auto flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-green-600 hover:bg-green-700 transition-colors duration-300"
               >
                 <BookOpen className="mr-2 h-5 w-5" />

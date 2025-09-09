@@ -23,7 +23,7 @@ export function SectionProgramaCuidar() {
               </p>
               <div className="mt-6">
                 <Link
-                  to="/projetos/programa-cuidar"
+                  to="/programa-cuidar"
                   className="inline-flex items-center justify-center px-8 py-3 text-base font-bold rounded-full text-white bg-green-600 hover:bg-green-700 transition-transform hover:scale-105"
                 >
                   Conheça o Programa

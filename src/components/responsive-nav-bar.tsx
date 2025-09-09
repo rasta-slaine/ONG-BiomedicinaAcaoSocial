@@ -10,40 +10,40 @@ const projetos = [
   {
     id: 1,
     nome: "Projeto Biomedicina Ação Social",
-    href: "/projetos/biomedicina",
+    href: "/biomedicina",
   },
   {
     id: 2,
     nome: "Projeto Enfermagem Ação Social",
-    href: "/projetos/enfermagem",
+    href: "/enfermagem",
   },
   {
     id: 3,
     nome: "Projeto Psicológia Ação Social",
-    href: "/projetos/psicologia",
+    href: "/psicologia",
   },
-  { id: 4, nome: "Projeto Farmácia Ação Social", href: "/projetos/farmacia" },
+  { id: 4, nome: "Projeto Farmácia Ação Social", href: "/farmacia" },
   {
     id: 5,
     nome: "Projeto Fisioterapia Ação Social",
-    href: "/projetos/fisioterapia",
+    href: "/fisioterapia",
   },
-  { id: 6, nome: "Projeto Nutrição Ação Social", href: "/projetos/nutricao" },
+  { id: 6, nome: "Projeto Nutrição Ação Social", href: "/nutricao" },
   {
     id: 7,
     nome: "Projeto Veterinária Ação Social",
-    href: "/projetos/veterinaria",
+    href: "/veterinaria",
   },
-  { id: 8, nome: "Projeto Medicina Ação Social", href: "/projetos/medicina" },
+  { id: 8, nome: "Projeto Medicina Ação Social", href: "/medicina" },
   {
     id: 9,
     nome: "Projeto Acupuntura Ação Social",
-    href: "/projetos/acupuntura",
+    href: "/acupuntura",
   },
   {
     id: 10,
     nome: "Projeto Odontologia Ação Social",
-    href: "/projetos/odontologia",
+    href: "/odontologia",
   },
 ];
 

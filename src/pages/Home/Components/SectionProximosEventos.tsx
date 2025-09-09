@@ -64,7 +64,7 @@ const formatDate = (dateString: string) => {
 const EventCard = ({ event }: { event: Event }) => {
   return (
     <a
-      href={`/events/${event.id}`}
+      href={`/eventos/${event.id}`}
       className="group block bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-2"
     >
       <div className="relative overflow-hidden aspect-video">
@@ -132,7 +132,7 @@ export const SectionProximosEventos = () => {
         {/* Botão para Ver Todos */}
         <div className="mt-16 text-center">
           <a
-            href="/events"
+            href="/eventos"
             className="inline-flex items-center justify-center px-8 py-3 text-base font-medium rounded-md text-white bg-green-600 hover:bg-green-700 transition-transform hover:scale-105"
           >
             Ver Todos os Eventos

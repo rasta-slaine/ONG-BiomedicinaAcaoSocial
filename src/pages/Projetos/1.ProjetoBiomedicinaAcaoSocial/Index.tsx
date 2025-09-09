@@ -65,7 +65,7 @@ const ctaCardsData = [
     title: "Prêmio de Excelência",
     description:
       "Veja como honramos o legado do Dr. Dácio Campos incentivando a próxima geração de cientistas através do nosso prêmio anual de pesquisa.",
-    href: "/premio-dacio-campos",
+    href: "/premio-dacio-campos-inscricao",
     buttonText: "Ver o Prêmio",
   },
 ];

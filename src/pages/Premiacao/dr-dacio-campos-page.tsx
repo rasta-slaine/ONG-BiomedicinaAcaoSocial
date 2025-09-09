@@ -158,7 +158,7 @@ export function DrDacioCamposPage() {
                   size="lg"
                   className=" w-fit bg-green-600 text-white hover:bg-green-700"
                 >
-                  <Link to="/premio-dacio-campos/inscricao">
+                  <Link to="/premio-dacio-campos-inscricao">
                     Submeta sua Pesquisa
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>

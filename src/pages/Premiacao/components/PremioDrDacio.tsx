@@ -235,7 +235,7 @@ export const PremioDrDacio = () => {
                   className="bg-gradient-to-r from-emerald-600 to-green-500 text-white border-white hover:bg-white/90 text-lg px-8 py-5 hover:scale-105 transition-transform duration-200"
                   asChild
                 >
-                  <Link to="/premio-dacio-campos/inscricao">
+                  <Link to="/premio-dacio-campos-inscricao">
                     {" "}
                     Inscreva sua Pesquisa
                     <ArrowRight className="ml-2 h-4 w-4" />
