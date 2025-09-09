@@ -143,7 +143,7 @@ export function FormularioInscricao() {
               Inscrição para o Prêmio Dr. Dácio Campos
             </h1>
             <p className="mt-6 text-lg sm:text-xl text-white/90 max-w-2xl mx-auto">
-              Submeta sua pesquisa científica sobre diabetes e concorra.
+              Submeta sua pesquisa científica sobre oncologia e concorra.
             </p>
           </div>
         </div>
