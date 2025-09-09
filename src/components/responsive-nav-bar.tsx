@@ -85,7 +85,7 @@ function MobileMenu({ onClose }: { onClose: () => void }) {
         animate={{ x: 0 }}
         exit={{ x: "100%" }}
         transition={{ type: "spring", stiffness: 300, damping: 30 }}
-        className="fixed top-0 right-0 h-[800px] w-4/5 max-w-sm bg-white shadow-xl p-6 overflow-y-auto"
+        className="fixed top-0 right-0 h-[400px] w-4/5 max-w-sm bg-white shadow-xl p-6 overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-center justify-between mb-8">
